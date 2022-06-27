@@ -1,0 +1,21 @@
+<%- include("header.ejs") -%>
+    <div class="main-container">
+        <div class="container" id="heading">
+            <h1><%= listHeading %></h1>
+        </div>
+        <div class="container">
+            <% todoItem.forEach((item) => { %>
+                <form method="post" action="/delete">
+                    <p><input type="checkbox" name="checkedItemId" value="<%= item._id %>" onchange="this.form.submit()"><%= item.name %></p>
+                    <input type="hidden" name="listName" value="<%= listHeading %>" onchange="this.form.submit()">
+                </form>
+            <% }); %>
+            <form action="/" method="post">
+                <input type="text" name="item">
+                <button type="submit" name="submitButton" value="<%= listHeading %>">+</button>
+            </form>
+        </div>
+    </div>    
+<%- include("footer.ejs") -%>
+
+    
